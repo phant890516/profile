@@ -1,0 +1,487 @@
+@import "tailwindcss";
+@import url('https://fonts.cdnfonts.com/css/general-sans');
+
+* {
+  scroll-behavior: smooth;
+  user-select:none;
+}
+
+body{
+  width: 100%;
+  height: 100%;
+  font-family: 'General Sans', sans-serif;
+  background-color: #FFFFFF;
+}
+
+/* ///////////////////////////////////////////////////////////////////page change ////////////////////////////////////////////////////////////////////*/
+/* 
+::view-transition-old(root),
+::view-transition-new(root){
+  animation:none !important;
+}
+
+::view-transition-group(root){
+  z-index: auto !important;
+}
+
+::view-transition-image-pair(root){
+  isolation: isolate;
+  will-change: transform, opacity, clip-path;
+  z-index: 1;
+}
+
+::view-transition-new(root){
+  z-index: 10000;
+  animation: none !important;
+}
+
+::view-transition-old(root){
+  z-index: 1;
+  animation: none !important;
+} */
+
+/* /////////////////////////////////////////////////////////////////hover-nav//////////////////////////////////////////////////////////////////// */
+.hover-target {
+  position: relative;
+  overflow: hidden;
+  display: inline-block; /* 讓文字跟動畫區域一致 */
+  text-decoration: none;
+  color: inherit; /* 保持原本的字色，由 Tailwind 控制 */
+}
+
+/* span: 上下切割 */
+.hover-target .target-text:first-of-type {
+  clip-path: polygon(0% 0%, 100% 0%, 100% 51%, 0% 51%);
+}
+.hover-target .target-text:nth-of-type(2) {
+  clip-path: polygon(0% 49%, 100% 49%, 100% 100%, 0% 100%);
+}
+
+/* 所有 target-text 統一 block 顯示 */
+.hover-target .target-text {
+  display: block;
+}
+
+/* 疊在一起的 span：除了最後一個完整文字 */
+.hover-target .target-text:not(span:last-of-type) {
+  position: absolute;
+  left: 0;
+  top: 0;
+}
+/*//////////////////////////////////////////////////////////////////////////// ABOUT ME & MY SKILL///////////////////////////////////////////////////////////////////*/
+#svg {
+  margin: 10px;
+  enable-background:new 0 0 1200 100;
+}
+
+#About , #Me ,#My ,#Skill{
+  visibility: hidden;
+} 
+
+.about-stroke , .me-stroke , .my-stroke , .skill-stroke{
+  fill:none;
+  stroke:#FFFFFF;
+  stroke-width:4;
+  stroke-linecap:round;
+  stroke-linejoin:round;
+} 
+.about-svg {
+  margin: 10px;
+}
+
+.text-stroke{
+   -webkit-text-stroke: 1px #000;
+   color:white;
+}
+
+@layer base {
+  button, a {
+    @apply cursor-pointer;
+  }
+}
+
+@utility nav-li{
+  @apply text-[20px] px-[20px] py-[10px]; 
+}
+
+@utility content {
+  content-visibility: auto;
+}
+
+/* @layer utilities {
+  .glitch-text::before {
+    content: attr(data-text);
+    background: black;
+    position: absolute;
+    text-shadow: 2px 0 red;
+    left: -2px;
+    clip-path: inset(0 0 0 0);
+    animation: ani2 1s infinite linear alternate-reverse;
+  }
+
+  .glitch-text::after {
+    content: attr(data-text);
+    background: black;
+    position: absolute;
+    text-shadow: -2px 0 blue;
+    left: 2px;
+    clip-path: inset(0 0 0 0);
+    animation: ani1 1s infinite linear alternate-reverse;  
+  } */
+ .card {
+            background: linear-gradient(145deg, #f8fafc, #e2e8f0);
+            color: #1e293b;
+            border: 1px solid #cbd5e1;
+            border-radius: 10px;
+            padding: 30px;
+            text-align: center;
+            align-items: center;
+            box-shadow: 
+                0 25px 50px rgba(0, 0, 0, 0.15),
+                0 12px 25px rgba(0, 0, 0, 0.1),
+                inset 0 1px 0 rgba(255, 255, 255, 0.8);
+            transition: all 0.3s ease;
+            cursor: pointer;
+            display:flex;
+            flex-direction: column;
+            gap:17px;
+        }
+
+.card:hover {
+    transform: translateY(-8px);
+    box-shadow: 
+        0 35px 70px rgba(0, 0, 0, 0.2),
+        0 18px 35px rgba(0, 0, 0, 0.15),
+        inset 0 1px 0 rgba(255, 255, 255, 1);
+}
+.card-img-container{
+  width:100px;
+  height:100px;
+}
+.card > p{
+  color:#2B3A72;
+  font-size:24px;
+  font-weight: bold;
+}
+/* ///////////////////////////////////////////////////////////////////////////////////cube //////////////////////////////////////////////////////////////////////*/
+#cube{
+  opacity: 0;
+}
+
+.cubeContainer {
+  position: fixed;
+}
+
+.cubeOfCubes {
+  top:-2vh;
+  left: 30vw;
+  perspective: 25em;
+  will-change: transform;
+}
+
+.cube {
+  width: 3em;
+  height: 3em;
+  position: absolute;
+  top: calc(50% - 1.5em);
+  left: 30%;
+  transform-style: preserve-3d;
+  will-change: transform;
+}
+
+.cube__face {
+  width: 3em;
+  height: 3em;
+  box-shadow: inset 0 0 0 2px #b1b1b188;
+  position: absolute;
+  transform: translateZ(1.5em); /* 預設前面 */
+}
+
+
+
+/* 六個面 */
+.cube__face:nth-child(1) {
+  transform: rotateY(0deg) translateZ(1.5em);   /* 前 */
+}
+.cube__face:nth-child(2) {
+  transform: rotateY(180deg) translateZ(1.5em); /* 後 */
+}
+.cube__face:nth-child(3) {
+  transform: rotateX(90deg) translateZ(1.5em);  /* 上 */
+}
+.cube__face:nth-child(4) {
+  transform: rotateX(-90deg) translateZ(1.5em); /* 下 */
+}
+.cube__face:nth-child(5) {
+  transform: rotateY(90deg) translateZ(1.5em);  /* 右 */
+}
+.cube__face:nth-child(6) {
+  transform: rotateY(-90deg) translateZ(1.5em); /* 左 */
+}
+
+  /*/////////////////////////////////////////////////////////////////////////////*走馬灯///////////////////////////////////////////////////////////////////////////////*/
+  /* .marqueePS{
+    --w:300px;
+    width:var(--w);
+    overflow: hidden;
+    white-space: nowrap;
+  } */
+  
+  .marqueePSText{
+    width:max-content;
+    animation:20s marqueePS linear infinite;
+  }
+  .marqueePS {
+    width:80vw;
+    margin: auto auto 20px auto;
+    overflow: hidden;
+    white-space: nowrap;
+    gap:150px;  
+  }
+
+  .marqueePS:hover .marqueePSText{
+    animation-play-state: paused !important;
+}
+
+
+
+@keyframes marqueePS {
+  0%   { transform: translateX(-100%); }
+  100% { transform: translateX(0); }
+}
+
+
+
+@keyframes ani1 {
+  0%   { clip-path: inset(0 0 0 0); }
+  5%   { clip-path: inset(68px 0 32px 0); }
+  10%  { clip-path: inset(23px 0 67px 0); }
+  100% { clip-path: inset(5px 0 87px 0); }
+}
+
+@keyframes ani2 {
+  0%   { clip-path: inset(0 0 0 0); }
+  5%   { clip-path: inset(5px 0 87px 0); }
+  10%  { clip-path: inset(67px 0 23px 0); }
+  100% { clip-path: inset(68px 0 32px 0); }
+}
+
+@keyframes move-out{
+  from{
+    opacity:1;
+    transform:translateY(0);
+  }
+
+  to{
+    opacity:0.5;
+    transform:translateY(-35%);
+  }
+}
+
+@keyframes move-in{
+  from{
+    clip-path: polygon(0% 100%, 100% 100%, 100% 100%, 0% 100%);
+  }
+
+  to{
+    clip-path: polygon(0% 100%, 100% 100%, 100% 0%, 0% 0%);
+  }
+}
+
+::view-transition-old(root){
+  animation: 1.5s cubic-bezier(0.87, 0, 0.13, 1) both move-out;
+}
+
+::view-transition-new(root){
+  animation: 1.5s cubic-bezier(0.87, 0, 0.13, 1) both move-in;
+}
+
+/* ////////////////////////////////////////////////////////////////////////////work-page ////////////////////////////////////////////////////////////////////////////*/
+#wrapper {
+  overflow: hidden;
+  position: fixed;
+  height: 100%;
+  width: 100%;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+
+#content {
+  overflow: visible;
+  width: 100%;
+}
+
+.text {
+  position: fixed;
+  top: 50vh;
+  font-family: termina, sans-serif;
+  font-weight: 900;
+  font-style: normal;
+  font-size: 8vw;
+  text-align: center;
+  width: 100%;
+  transform: translateY(-100%);
+  z-index: 2;
+  color: white;
+  -webkit-text-stroke-width: 1.5px;
+  -webkit-text-stroke-color: white;
+  z-index: -2;
+}
+
+.outline-text {
+  color: transparent;
+  -webkit-text-stroke-width: 1.5px;
+  -webkit-text-stroke-color: white;
+  z-index: 2;
+}
+
+.filter-text {
+  mix-blend-mode: screen;
+  color: #804691;
+  z-index: 2;
+}
+
+.images {
+  padding-top: 60vh;
+  position: relative;
+  width: 100%;
+ 
+  margin: 0 auto;
+  min-height: 150vh;
+  height: 100%;
+  display: grid;
+  grid-template-columns: repeat(20, 2%);
+  grid-template-rows: repeat(30, 3%);
+  justify-content: center;
+  justify-items: center;
+  align-items: center;
+  z-index: 1;
+  object-fit: cover;
+}
+
+.content__slide-item {
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
+
+.images img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.images a:nth-child(1) {
+  grid-area: 1/1/6/8;
+}
+
+.images a:nth-child(2) {
+  grid-area: 3/12/8/20;
+}
+
+.images a:nth-child(3) {
+  grid-area: 9/5/13/15;
+}
+
+.images a:nth-child(4) {
+  grid-area: 14/1/18/8;
+}
+
+.images a:nth-child(5) {
+  grid-area: 16/12/20/19;
+}
+
+.images a:nth-child(6) {
+  grid-area: 20/2/25/9;
+}
+
+.images a:nth-child(7) {
+  grid-area: 22/11/24/20;
+}
+
+.images a:nth-child(8) {
+  grid-area: 26/5/30/15;
+}
+
+.images a {
+  display: block;
+  width: 100%;
+  height: 100%;
+  color: inherit;
+  text-decoration: none;
+  transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+.images a:hover {
+  transform: scale(1.02);
+  opacity: 0.9;
+  cursor: pointer;
+}
+
+/* contact page*/
+.contact{
+  display:flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background-color: #1e1e1e;
+}
+
+form{
+  max-width: 600px;
+  width:100%;
+  background-color: #e6e6e6;
+  padding: 25px 25px 30px;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.1);
+  color:#333;
+  margin:25px;
+}
+
+form h2{
+  font-size: 30px;
+  text-align: center;
+}
+
+form .input-box{
+  margin-top: 20px;
+}
+
+.input-box .field{
+  width:100%;
+  height:50px;
+  background-color: transparent;
+  border:2px solid #ddd;
+  outline: none;
+  border-radius: 6px;
+  padding:15px;
+  font-size: 16px;
+  color:#333;
+  margin-top:8px;
+}
+
+.input-box .field.mess{
+  height:200px;
+  resize:none;
+}
+
+form button{
+  width:100%;
+  height:55px;
+  background-color: rgb(35, 164, 121);
+  border:none;
+  border-radius: 6px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.1);
+  cursor:pointer;
+  font-size: 16px;
+  color:#fff;
+  font-weight: 500;
+  margin-top: 25px;
+  transition:0.5s;
+}
+
+form button:hover{
+  background:#624ec6;
+}
