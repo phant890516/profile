@@ -29,9 +29,9 @@ const Works2 = () => {
     },
     { 
       id: 4, 
-      title: 'Cyber Sign', 
+      title: 'Station', 
       cat: 'UI INTERFACE', 
-      img: 'https://images.unsplash.com/photo-1563089145-599997674d42?q=80&w=800&auto=format&fit=crop',
+      img: 'images/station0101.png',
       pos: 'lg:top-[450px] lg:right-20',
       url:"" 
     },
