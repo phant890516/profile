@@ -25,7 +25,7 @@ const Works2 = () => {
       cat: 'WEB DESIGN', 
       img: 'images/Subkari.png',
       pos: 'lg:top-[500px] lg:left-20',
-      url:"https://github.com/phant890516/subkari" 
+      url:"https://subkari.onrender.com" 
     },
     { 
       id: 4, 
