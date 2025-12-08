@@ -12,34 +12,6 @@ body{
   font-family: 'General Sans', sans-serif;
   background-color: #FFFFFF;
 }
-
-/* ///////////////////////////////////////////////////////////////////page change ////////////////////////////////////////////////////////////////////*/
-/* 
-::view-transition-old(root),
-::view-transition-new(root){
-  animation:none !important;
-}
-
-::view-transition-group(root){
-  z-index: auto !important;
-}
-
-::view-transition-image-pair(root){
-  isolation: isolate;
-  will-change: transform, opacity, clip-path;
-  z-index: 1;
-}
-
-::view-transition-new(root){
-  z-index: 10000;
-  animation: none !important;
-}
-
-::view-transition-old(root){
-  z-index: 1;
-  animation: none !important;
-} */
-
 /* /////////////////////////////////////////////////////////////////hover-nav//////////////////////////////////////////////////////////////////// */
 .hover-target {
   position: relative;
@@ -108,27 +80,7 @@ body{
   content-visibility: auto;
 }
 
-/* @layer utilities {
-  .glitch-text::before {
-    content: attr(data-text);
-    background: black;
-    position: absolute;
-    text-shadow: 2px 0 red;
-    left: -2px;
-    clip-path: inset(0 0 0 0);
-    animation: ani2 1s infinite linear alternate-reverse;
-  }
-
-  .glitch-text::after {
-    content: attr(data-text);
-    background: black;
-    position: absolute;
-    text-shadow: -2px 0 blue;
-    left: 2px;
-    clip-path: inset(0 0 0 0);
-    animation: ani1 1s infinite linear alternate-reverse;  
-  } */
- .card {
+.card {
             background: linear-gradient(145deg, #f8fafc, #e2e8f0);
             color: #1e293b;
             border: 1px solid #cbd5e1;
@@ -218,38 +170,6 @@ body{
 .cube__face:nth-child(6) {
   transform: rotateY(-90deg) translateZ(1.5em); /* 左 */
 }
-
-  /*/////////////////////////////////////////////////////////////////////////////*走馬灯///////////////////////////////////////////////////////////////////////////////*/
-  /* .marqueePS{
-    --w:300px;
-    width:var(--w);
-    overflow: hidden;
-    white-space: nowrap;
-  } */
-  
-  .marqueePSText{
-    width:max-content;
-    animation:20s marqueePS linear infinite;
-  }
-  .marqueePS {
-    width:80vw;
-    margin: auto auto 20px auto;
-    overflow: hidden;
-    white-space: nowrap;
-    gap:150px;  
-  }
-
-  .marqueePS:hover .marqueePSText{
-    animation-play-state: paused !important;
-}
-
-
-
-@keyframes marqueePS {
-  0%   { transform: translateX(-100%); }
-  100% { transform: translateX(0); }
-}
-
 
 
 @keyframes ani1 {

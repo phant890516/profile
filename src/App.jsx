@@ -8,11 +8,6 @@ import Landing from './landing.jsx'
 import About from './About.jsx'
 import Works from './Works.jsx'
 import Contact from './Contact.jsx'
-import About2 from './About2.jsx';
-import About3 from './About3.jsx';
-import Works2 from './Works2.jsx';
-import Contact2 from './Contact2.jsx';
-
 import './index.css'
 
 function AnimatedRoutes(){
@@ -27,12 +22,12 @@ function AnimatedRoutes(){
           </PageWrapper>} />
         <Route path='/about' element={
           <PageWrapper>
-            <About2 />
+            <About />
           </PageWrapper>  
         } />
         <Route path='/works' element={
           <PageWrapper>  
-            <Works2 />
+            <Works />
           </PageWrapper>
         } />
         <Route path='/contact' element={

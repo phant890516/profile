@@ -1,359 +1,357 @@
-import  { useRef, useEffect, useState} from "react";
-import { gsap ,Expo} from "gsap";
-import {ScrollTrigger} from "gsap/ScrollTrigger";
-import { DrawSVGPlugin } from "gsap/DrawSVGPlugin";
-import { MotionPathPlugin } from "gsap/all";
-import AOS from "aos";
-import "aos/dist/aos.css";
-import Cube from "./components/cube";
+import React, { useState, useEffect, useRef } from 'react';
+import { Mail, Github, Code, Layers, Zap, Terminal, Globe, Cpu, Atom, Gauge, PencilRuler, Timer, Server,Image, Video, Dices, MessageSquare, Send, X, Sparkles, Loader2 } from 'lucide-react';
+import './About.css'
 
-
-gsap.registerPlugin(ScrollTrigger);
-gsap.registerPlugin(DrawSVGPlugin);
-
-const About=()=> {
-  const aboutRef = useRef(null);
-  const meRef = useRef(null);
-
-  ///////////////////////////////////////////////////////////// AboutMe Animation /////////////////////////////////////////////////////////////////////////////
+const CyberPortfolio = () => {
+  const [glitchActive, setGlitchActive] = useState(false);
+  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
+  const [chatOpen, setChatOpen] = useState(false);
+  const [scrollProgress, setScrollProgress] = useState(0);
+  const skillsSectionRef = useRef(null);
+  // マウス位置によるパララックス効果
   useEffect(() => {
-  let ctx = gsap.context(() => {
-    // About animation
-    gsap.set(aboutRef.current.querySelectorAll(".about-stroke"), {
-      visibility: "visible",
-    });
-
-    gsap.from(aboutRef.current.querySelectorAll(".about-stroke"), {
-      duration: 3,
-      drawSVG: 0,
-      ease: "power1.inOut",
-      onComplete: () => {
-      gsap.to(aboutRef.current.querySelectorAll(".about-stroke"), { fill: "white", duration: 1 }); // text fill white
-    }
-    });
-    
-
-    // Me animation
-    gsap.set(meRef.current.querySelectorAll(".me-stroke"), {
-      visibility: "visible",
-    });
-
-    gsap.from(meRef.current.querySelectorAll(".me-stroke"), {
-      duration: 3,
-      drawSVG: 0,
-      ease: "power1.inOut",
-      onComplete:()=>{
-        gsap.to(meRef.current.querySelectorAll(".me-stroke"),{fill:"white",duration:1}); //text fill white
-      }
-    });
-  }, [aboutRef, meRef]);
-
-  return () => ctx.revert(); // 清理
-}, []);
-
-//////////////////////////////////////////////////////////////////article effect///////////////////////////////////////////////////////////////////////
-  const panelsSectionRef = useRef(null);
-  const panelsContainerRef = useRef(null);
-  const tweenRef = useRef(null);
-
-  useEffect(() => {
-    const panelsContainer = panelsContainerRef.current;
-    const panels = gsap.utils.toArray("#panels-container .panel");
-
-    // 建立水平滾動動畫
-    tweenRef.current = gsap.to(panels, {
-      xPercent: -100 * (panels.length - 1),
-      ease: "none",
-      scrollTrigger: {
-        trigger: "#panels-container",
-        pin: true,
-        start: "top top",
-        scrub: 0.3,
-        snap: {
-          snapTo: 1 / (panels.length - 1),
-          inertia: false,
-          duration: { min: 0.1, max: 0.1 }
-        },
-        end: () => "+=" + (panelsContainer.offsetWidth - window.innerWidth)
-      }
-    });
-
-    // 清理函數
-    return () => {
-      if (tweenRef.current && tweenRef.current.scrollTrigger) {
-        tweenRef.current.scrollTrigger.kill();
-      }
-      tweenRef.current = null;
+    const handleMouseMove = (e) => {
+      setMousePosition({
+        x: (e.clientX / window.innerWidth) * 2 - 1,
+        y: (e.clientY / window.innerHeight) * 2 - 1,
+      });
     };
+    window.addEventListener('mousemove', handleMouseMove);
+    return () => window.removeEventListener('mousemove', handleMouseMove);
   }, []);
 
-// use AOS 
-  useEffect(() => {
-    AOS.init(); 
-  }, []);
+  //skill boardの表示動画
+  useEffect(()=>{
+    const handleScroll = () =>{
+      if(!skillsSectionRef.current) return;
+      const element = skillsSectionRef.current;
+      const elementTop = element.getBoundingClientRect().top;
+      const elementHeight = element.getBoundingClientRect().height;
+      const windowHeight = window.innerHeight;
+      //進捗確認
+      const distanceToStart = windowHeight - elementTop;
+      const progress = Math.max(0,Math.min(1,distanceToStart/(elementHeight*0.6)));
+      setScrollProgress(progress);
+    };
+    window.addEventListener('scroll',handleScroll);
+    return()=>window.removeEventListener('scroll',handleScroll);
+  },[]);
 
-  return(
-    <div className="relative w-full ">
-      <div className="flex justify-center items-center bg-[#060606] p-4 w-full h-[800px] z-10" id="aboutme">
-      <svg version="1.1"
-        xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink" x="0px" y="0px" xmlSpace="preserve"
-        width="800"
-        height="100"
-        viewBox="0 0 800 100"
-        id="svg"
-      >
-        <g id="About" ref={aboutRef}>
-          <path
-            className="about-stroke"
-            d="M14.0909 95H2.27273L36.4545 1.90909H48.0909L82.2727 95H70.4545L42.6364 16.6364H41.9091L14.0909 95ZM18.4545 58.6364H66.0909V68.6364H18.4545V58.6364Z"
+  // グリッチトリガー
+  const triggerGlitch = () => {
+    setGlitchActive(true);
+    setTimeout(() => setGlitchActive(false), 300);
+  };
+  //Github event
+  const handleGithubClick = () => {
+    // _blank 
+    // noopener,noreferrer 
+    window.open("https://github.com/phant890516", "_blank", "noopener,noreferrer");
+  };
 
-            transform="translate(0,0)"
-          />
-          <path
-            className="about-stroke"
-            d="M1.27273 95V1.90909H33.8182C40.303 1.90909 45.6515 3.0303 49.8636 5.27273C54.0758 7.48485 57.2121 10.4697 59.2727 14.2273C61.3333 17.9545 62.3636 22.0909 62.3636 26.6364C62.3636 30.6364 61.6515 33.9394 60.2273 36.5455C58.8333 39.1515 56.9849 41.2121 54.6818 42.7273C52.4091 44.2424 49.9394 45.3636 47.2727 46.0909V47C50.1212 47.1818 52.9849 48.1818 55.8636 50C58.7424 51.8182 61.1515 54.4242 63.0909 57.8182C65.0303 61.2121 66 65.3636 66 70.2727C66 74.9394 64.9394 79.1364 62.8182 82.8636C60.697 86.5909 57.3485 89.5455 52.7727 91.7273C48.197 93.9091 42.2424 95 34.9091 95H1.27273ZM12.5455 85H34.9091C42.2727 85 47.5 83.5758 50.5909 80.7273C53.7121 77.8485 55.2727 74.3636 55.2727 70.2727C55.2727 67.1212 54.4697 64.2121 52.8636 61.5455C51.2576 58.8485 48.9697 56.697 46 55.0909C43.0303 53.4545 39.5152 52.6364 35.4545 52.6364H12.5455V85ZM12.5455 42.8182H33.4545C36.8485 42.8182 39.9091 42.1515 42.6364 40.8182C45.3939 39.4848 47.5758 37.6061 49.1818 35.1818C50.8182 32.7576 51.6364 29.9091 51.6364 26.6364C51.6364 22.5455 50.2121 19.0758 47.3636 16.2273C44.5152 13.3485 40 11.9091 33.8182 11.9091H12.5455V42.8182Z"
+  return (
+    <div className="min-h-screen bg-[#050505] text-[#e0e0e0] font-sans selection:bg-[#00f3ff] selection:text-black overflow-x-hidden relative">
 
-            transform="translate(100,0)"
-          />
-          <path
-            className="about-stroke"
-            d="M83.8182 49.4545C83.8182 59.2727 82.0455 67.7576 78.5 74.9091C74.9545 82.0606 70.0909 87.5758 63.9091 91.4545C57.7273 95.3333 50.6667 97.2727 42.7273 97.2727C34.7879 97.2727 27.7273 95.3333 21.5455 91.4545C15.3636 87.5758 10.5 82.0606 6.95455 74.9091C3.40909 67.7576 1.63636 59.2727 1.63636 49.4545C1.63636 39.6364 3.40909 31.1515 6.95455 24C10.5 16.8485 15.3636 11.3333 21.5455 7.45454C27.7273 3.57575 34.7879 1.63636 42.7273 1.63636C50.6667 1.63636 57.7273 3.57575 63.9091 7.45454C70.0909 11.3333 74.9545 16.8485 78.5 24C82.0455 31.1515 83.8182 39.6364 83.8182 49.4545ZM72.9091 49.4545C72.9091 41.3939 71.5606 34.5909 68.8636 29.0455C66.197 23.5 62.5758 19.303 58 16.4545C53.4545 13.6061 48.3636 12.1818 42.7273 12.1818C37.0909 12.1818 31.9848 13.6061 27.4091 16.4545C22.8636 19.303 19.2424 23.5 16.5455 29.0455C13.8788 34.5909 12.5455 41.3939 12.5455 49.4545C12.5455 57.5151 13.8788 64.3182 16.5455 69.8636C19.2424 75.4091 22.8636 79.6061 27.4091 82.4545C31.9848 85.303 37.0909 86.7273 42.7273 86.7273C48.3636 86.7273 53.4545 85.303 58 82.4545C62.5758 79.6061 66.197 75.4091 68.8636 69.8636C71.5606 64.3182 72.9091 57.5151 72.9091 49.4545Z"
-            transform="translate(175,0)"
-          />
-          <path
-            className="about-stroke"
-            d="M62.3636 1.90909H73.6364V63.5455C73.6364 69.9091 72.1364 75.5909 69.1364 80.5909C66.1667 85.5606 61.9697 89.4848 56.5455 92.3636C51.1212 95.2121 44.7576 96.6364 37.4545 96.6364C30.1515 96.6364 23.7879 95.2121 18.3636 92.3636C12.9394 89.4848 8.72727 85.5606 5.72727 80.5909C2.75758 75.5909 1.27273 69.9091 1.27273 63.5455V1.90909H12.5455V62.6364C12.5455 67.1818 13.5455 71.2273 15.5455 74.7727C17.5455 78.2879 20.3939 81.0606 24.0909 83.0909C27.8182 85.0909 32.2727 86.0909 37.4545 86.0909C42.6364 86.0909 47.0909 85.0909 50.8182 83.0909C54.5455 81.0606 57.3939 78.2879 59.3636 74.7727C61.3636 71.2273 62.3636 67.1818 62.3636 62.6364V1.90909Z"
-            transform="translate(270,0)"
-          />
-          <path
-            className="about-stroke"
-            d="M1.18182 11.9091V1.90909H71V11.9091H41.7273V95H30.4545V11.9091H1.18182Z"
-            transform="translate(360,0)"
-          />
-        </g>
+      {/* --- Background Elements --- */}
+      <div className="fixed inset-0 z-0 cyber-grid pointer-events-none"></div>
+      <div className="fixed inset-0 z-50 scanlines pointer-events-none opacity-20"></div>
+      
+      {/* Decorative Glow Spots */}
+      <div className="fixed top-0 left-1/4 w-96 h-96 bg-[#00f3ff] rounded-full filter blur-[150px] opacity-10 animate-pulse"></div>
+      <div className="fixed bottom-0 right-1/4 w-96 h-96 bg-[#ff00ff] rounded-full filter blur-[150px] opacity-10 animate-pulse" style={{animationDelay: '1s'}}></div>
 
-        <g id="Me" ref={meRef}>
-          <path
-            className="me-stroke"
-            d="M1.27273 1.90909H14.7273L46.3636 79.1818H47.4545L79.0909 1.90909H92.5455V95H82V24.2727H81.0909L52 95H41.8182L12.7273 24.2727H11.8182V95H1.27273V1.90909Z"
-            transform="translate(500,0)"
-          />
-          <path
-            className="me-stroke"
-            d="M1.27273 95V1.90909H57.4545V11.9091H12.5455V43.3636H54.5455V53.3636H12.5455V85H58.1818V95H1.27273Z"
-            transform="translate(610,0)"
-          />
-        </g>
-      </svg>
-      </div>
 
-      <section id="panels" ref={panelsSectionRef} className="overflow-hidden">
-        <div className="w-[600vw] flex flex-row" id="panels-container" ref={panelsContainerRef}>
-          <article id="panel-1" className="panel w-screen h-[100vh] flex items-center justify-center ">
-            <div className="flex justify-center items-center bg-black p-4 w-full h-[800px] bg-white container">
-              <p className="text-2xl leading-normal text-[#1e1e1e] text-center">こんにちは！LinHengYouです。<br />このサイトは、Reactを用いて制作したポートフォリオです。<br />これまでの制作物や習得したスキルをまとめています。</p>
+      {/* --- Header --- */}
+      <header className="fixed top-0 w-full z-40 bg-[#050505]/80 backdrop-blur-sm border-b border-[#00f3ff]/30">
+        <div className="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
+          <div className="text-2xl font-cyber font-bold tracking-widest text-[#00f3ff] group cursor-pointer" onClick={triggerGlitch}>
+            <span className={`glitch-text ${glitchActive ? 'glitch-active' : ''}`} data-text="LIN.DEV">LIN.DEV</span>
+          </div>
+          <nav className="hidden md:flex space-x-8 font-mono-cyber text-sm">
+            {['TOP PAGE', 'SKILLS', 'WORKS', 'CONTACT'].map((item) => (
+              <a key={item} href="#" className="relative group text-gray-400 hover:text-[#00f3ff] transition-colors duration-300">
+                <span className="absolute -left-4 opacity-0 group-hover:opacity-100 transition-opacity text-[#ff00ff]">&gt;</span>
+                {item}
+                <span className="block h-[1px] w-0 group-hover:w-full bg-[#00f3ff] transition-all duration-300"></span>
+              </a>
+            ))}
+          </nav>
+        </div>
+      </header>
+
+
+      {/* --- Main Content --- */}
+      <main className="relative z-10 pt-24 pb-20 px-4">
+        
+        {/* Title Section */}
+        <section className="min-h-[50vh] flex flex-col justify-center items-center text-center mb-20 relative">
+          <div className="absolute inset-0 flex items-center justify-center opacity-5 pointer-events-none select-none">
+             <span className="text-[20vw] font-cyber font-bold stroke-text text-transparent border-stroke">SYS.ADMIN</span>
+          </div>
+          
+          <h1 className="text-6xl md:text-9xl font-cyber font-black text-white mb-4 relative group hover:scale-105 transition-transform duration-500">
+            <span className="absolute -inset-1 blur opacity-30 bg-gradient-to-r from-[#00f3ff] to-[#ff00ff] group-hover:opacity-60 transition-opacity duration-300"></span>
+            <span className="relative z-10 glitch-text" data-text="ABOUT ME">ABOUT ME</span>
+          </h1>
+          <p className="font-mono-cyber text-[#00f3ff] tracking-[0.3em] text-lg animate-pulse">
+            // SYSTEM STATUS: ONLINE //
+          </p>
+        </section>
+
+
+        {/* Profile Details Grid */}
+        <section className="max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-12 mb-40 items-center">
+          
+          {/* Left Column: Image with Cyber Frame */}
+          <div className="lg:col-span-5 relative group">
+            <div className="absolute -inset-2 bg-gradient-to-br from-[#00f3ff] to-[#ff00ff] opacity-50 blur-sm group-hover:opacity-80 transition-opacity duration-500 rounded-sm"></div>
+            <div className="relative border border-[#00f3ff]/50 bg-black p-1">
+              {/* Corner Accents */}
+              <div className="absolute top-0 left-0 w-8 h-8 border-t-4 border-l-4 border-[#00f3ff]"></div>
+              <div className="absolute bottom-0 right-0 w-8 h-8 border-b-4 border-r-4 border-[#ff00ff]"></div>
+              
+              <div className="relative overflow-hidden h-[500px] w-full bg-gray-900">
+                {/* Image Placeholder / Effect */}
+                <img 
+                  src="images/profile.png" 
+                  alt="Profile" 
+                  className="w-full h-full object-cover filter grayscale contrast-125 group-hover:grayscale-0 transition-all duration-700 mix-blend-luminosity hover:mix-blend-normal"
+                />
+                <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/diagmonds-light.png')] opacity-30"></div>
+                
+                {/* Overlay Text */}
+                <div className="absolute bottom-4 left-4 font-mono-cyber text-xs text-[#00f3ff] bg-black/70 px-2 py-1 border border-[#00f3ff]/30">
+                  ID: LIN-2000<br/>
+                  LOC: OSAKA, JPN
+                </div>
+              </div>
             </div>
-          </article>
-          <article id="panel-2" className="panel w-screen h-[100vh] flex items-center justify-center ">
-            <div className="content bg-white w-[1030px] mx-auto flex flex-row gap-[40px]">      
-              <div className="img-container w-[550px] overflow-hidden ">
-                <img src="./images/aboutme_picture.jpg"></img>
+          </div>
+
+          {/* Right Column: Text Content */}
+          <div className="lg:col-span-7 space-y-8">
+            <div className="border-l-2 border-[#ff00ff] pl-6 relative">
+              <div className="absolute -left-[9px] top-0 w-4 h-4 bg-[#ff00ff] shadow-[0_0_10px_#ff00ff] rotate-45"></div>
+              <h2 className="text-2xl font-cyber text-white mb-4">
+                INTRODUCTION
+              </h2>
+              <p className="text-gray-300 leading-relaxed font-mono-cyber text-lg">
+                このサイトは、Reactを用いて制作した<span className="text-[#00f3ff]">LIN HENGYOU</span>のポートフォリオです。
+                これまでの制作物や習得したスキルをまとめています。
+              </p>
+            </div>
+
+            <div className="bg-[#0a0a0a] border border-[#333] p-6 relative overflow-hidden group hover:border-[#00f3ff] transition-colors duration-300">
+              <div className="absolute top-0 right-0 p-2 opacity-20 group-hover:opacity-100 transition-opacity text-[#00f3ff]">
+                <Terminal size={24} />
               </div>
-              <div className="max-w-[500px] flex justify-center items-center" data-aos="fade-right" data-aos-offset="300" data-aos-easing="ease-in-sine">
-                <p className="text-[20px] text-black">2000年生まれの台湾出身で、現在は大阪市に在住し、フルスタックエンドエンジニアを目指しているHAL大阪Web科の学生です。</p>
+              <div className="font-mono-cyber text-gray-400 mb-6 leading-7">
+                <div className='inline-block'><span className="text-[#ff00ff] mr-2">&gt;</span><span>2000年生まれの台湾出身。現在は大阪市に在住し、フルスタックエンドエンジニアを目指してHAL大阪Web科に在学中。</span></div><br/><br/>
+                <div className='inline-block'><span className="text-[#ff00ff] mr-2">&gt;</span><span>以前はMayaやBlenderなどの3Dツールを使ったプロジェクト開発経験がありましたが、現在はその知識を活かしてWebデザインを中心に活動しています。</span></div><br/><br/>
+                <div className='inline-block'><span className="text-[#ff00ff] mr-2">&gt;</span><span>日々の学習ではReactをメインに、時々Node.jsとFlaskを学んでいます。最近はWebGLやShaderの知識も学習しています。</span></div>
+              </div>
+              
+              <div className="flex gap-4 mt-6">
+                <a href="mailto:phant890516@gmail.com?subject=Feedback&body=Message"><button className="relative px-6 py-2 bg-transparent text-[#00f3ff] border border-[#00f3ff] font-cyber tracking-wider hover:bg-[#00f3ff] hover:text-black transition-all duration-300 group overflow-hidden" id="gmailButton">
+                  <span className="relative z-10 flex items-center gap-2"><Mail size={16}/> EMAIL</span>
+                  <div className="absolute inset-0 bg-[#00f3ff] transform -translate-x-full skew-x-12 group-hover:translate-x-0 transition-transform duration-300"></div>
+                </button></a>
+                <button onClick={handleGithubClick} className="relative px-6 py-2 bg-transparent text-[#ff00ff] border border-[#ff00ff] font-cyber tracking-wider hover:bg-[#ff00ff] hover:text-black transition-all duration-300 group overflow-hidden" id="gitButton">
+                  <span className="relative z-10 flex items-center gap-2"><Github size={16}/> GITHUB</span>
+                  <div className="absolute inset-0 bg-[#ff00ff] transform -translate-x-full skew-x-12 group-hover:translate-x-0 transition-transform duration-300"></div>
+                </button>
               </div>
             </div>
-          </article>
-          <article id="panel-3" className="panel w-screen h-[100vh] flex items-center justify-center ">
-            <div className="content bg-black w-screen mx-auto relative">
-              <div className="h-[100vh]">
-              <div className="cube">
-                <Cube />
-              </div>
-              </div>
-              <div className="max-w-[500px] absolute top-[40%] right-[30%]" data-aos="fade-right" data-aos-offset="300" data-aos-easing="ease-in-sine">
-                  <p className="text-[20px] text-white">
-                  以前はMayaとBlenderを使ったプロジェクト開発経験がありましたが、現在はWebデザインを中心に活動しています。<br />
-                  日々の勉強ではReactをメインに、時々Node.jsとFlaskを学んでいます。最近はWebGLやShaderの知識も学習しています。<br />
-                  </p>
+          </div>
+
+        </section>
+
+
+        {/* Skills Section */}
+        <section ref={skillsSectionRef} className="max-w-7xl mx-auto mb-20">
+          <div className="flex items-center justify-between mb-12 border-b border-[#333] pb-4">
+            <h2 className="text-4xl md:text-5xl font-cyber text-white">
+              <span className="text-[#00f3ff]">Skill Board</span>
+            </h2>
+            <div className="hidden md:block font-mono-cyber text-xs text-gray-500 text-right">
+              LOADING MODULES...<br/>
+              COMPLETED: 100%
             </div>
-            </div>
-          </article>
-          <article id="panel-4" className="panel w-screen h-[100vh] flex items-center justify-center  bg-[#0c0c15]">
-            {/* <div>
-            <div className="skill-page flex flex-row mx-auto gap-[133px]">
+          </div>
 
-              <div className="pt-[100px]">
-                <p className="text-[#1e1e1e] text-6xl">my skill</p>
-              </div>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+            {/* Program */}
+            <SkillCard 
+              title="HTML" 
+              exp="1年半" 
+              icon={<Globe size={48} className="text-[#e34c26]" />} 
+              color="#e34c26"
+              level={90}
+              delay={0}
+              scrollProgress={scrollProgress}
+            />
+            <SkillCard 
+              title="CSS" 
+              exp="1年半" 
+              icon={<Layers size={48} className="text-[#264de4]" />} 
+              color="#264de4"
+              level={85}
+              delay={0.1}
+              scrollProgress={scrollProgress}
+            />
+            <SkillCard 
+              title="JAVASCRIPT" 
+              exp="1年半" 
+              icon={<Zap size={48} className="text-[#f7df1e]" />} 
+              color="#f7df1e"
+              level={80}
+              delay={0.2}
+              scrollProgress={scrollProgress}
+            />
+            <SkillCard 
+              title="PYTHON" 
+              exp="1年半" 
+              icon={<Cpu size={48} className="text-[#3776ab]" />} 
+              color="#3776ab"
+              level={75}
+              delay={0.3}
+              scrollProgress={scrollProgress}
+            />
+            {/* Framework */}
+            <SkillCard 
+              title="REACT" 
+              exp="半年" 
+              icon={<Atom size={48} className="text-[#61DAFB]" />} 
+              color="#61DAFB"
+              level={70}
+              delay={0.4}
+              scrollProgress={scrollProgress}
+            />
+            <SkillCard 
+              title="TAILWIND" 
+              exp="半年" 
+              icon={<Gauge size={48} className="text-[#06B6D4]" />} 
+              color="#06B6D4"
+              level={70}
+              delay={0.5}
+              scrollProgress={scrollProgress}
+            />
+            <SkillCard 
+              title="GSAP" 
+              exp="半年" 
+              icon={<Timer size={48} className="text-[#88CE02]" />} 
+              color="#88CE02"
+              level={70}
+              delay={0.6}
+              scrollProgress={scrollProgress}
+            />
+            <SkillCard 
+              title="Flask" 
+              exp="1年" 
+              icon={<Server size={48} className="text-[#FFF]" />} 
+              color="#FFF"
+              level={85}
+              delay={0.7}
+              scrollProgress={scrollProgress}
+            />
+            {/* Tool */}
+            <SkillCard 
+              title="FIGMA" 
+              exp="1年半" 
+              icon={<PencilRuler size={48} className="text-[#A259FF]" />} 
+              color="#A259FF"
+              level={85}
+              delay={0.8}
+              scrollProgress={scrollProgress}
+            />
+            <SkillCard 
+              title="PHOTOSHOP" 
+              exp="2年" 
+              icon={<Image size={48} className="text-[#31A8FF]" />} 
+              color="#31A8FF"
+              level={90}
+              delay={0.9}
+              scrollProgress={scrollProgress}
+            />
+            <SkillCard 
+              title="PREMIERE" 
+              exp="2年" 
+              icon={<Video size={48} className="text-[#9999FF]" />} 
+              color="#9999FF"
+              level={95}
+              delay={1.0}
+              scrollProgress={scrollProgress}
+            />
+            <SkillCard 
+              title="MAYA" 
+              exp="3年" 
+              icon={<Dices size={48} className="text-[#00C2E4]" />} 
+              color="#00C2E4"
+              level={85}
+              delay={1.1}
+              scrollProgress={scrollProgress}
+            />
 
-              <div className="flex flex-row gap-[152px]">
-                <div className="flex flex-col items-start justify-start gap-[14px]">
-                  <p className="text-[#1e1e1e] text-2xl font-bold">LANGUAGE</p>
-                  <p className="text-[#1e1e1e] text-2xl leading-[1.5]">
-                    HTML<br />
-                    CSS<br />
-                    JAVASCRIPT<br />
-                    WEBGL<br />
-                    PYTHON<br />
-                    MYSQL<br />
-                  </p>
-                </div>
-                  <div className="flex flex-col items-start justify-start gap-[14px]">
-                  <p className="text-[#1e1e1e] text-2xl font-bold">FRAMEWORK</p>
-                  <p className="text-[#1e1e1e] text-2xl leading-[1.5]">
-                    REACT<br />
-                    NEXTJS<br />
-                    TAILWIND<br />
-                    GSAP<br />
-                    THREEJS<br />
-                    FLASK<br />
-                  </p>
-                </div>
-                  <div className="flex flex-col items-start justify-start gap-[14px]">
-                  <p className="text-[#1e1e1e] text-2xl font-bold">TOOL</p>
-                  <p className="text-[#1e1e1e] text-2xl leading-[1.5]">
-                    PHOTOSHOP<br />
-                    PREMIERE<br />
-                    AFTER EFFECT<br />
-                    FIGMA<br />
-                    MAYA<br />
-                    BLENDER<br />
-                    GITHUB<br />
-                  </p>
-                </div>
-              </div>
-            
-            </div>
-              <div className=" flex flex-row gap-2 justify-end items-end">
-                  <button className="border border-solid border-black hover:bg-gray-300 w-[200px] h-[46px] flex flex-row"><img src="./images/envelope.png"></img><span className="text-white text-stroke pl-[10px] pt-[10px]">Email</span></button>
-                  <button className="border border-solid border-black hover:bg-gray-300 w-[200px] h-[46px] flex flex-row"><img src="./images/logo.png"></img><span className="text-white text-stroke pl-[10px] pt-[10px]">Github</span></button>
-              </div>
-            </div> */}
-              <div className="my-skill">
-                <div className="text-center mb-[96px]">
-                  <h1 className="inline-block text-6xl text-white">My Skill -</h1>
-                  <h1 className="inline-block text-6xl text-[#B787F5]"> LANGUAGE</h1>
-                </div>
-                <div className="flex flex-row gap-[74px]">
+          </div>
+        </section>
 
-                  <div className="card">
-                    <img src="images/html100.png"></img>
-                    <p>HTML</p>
-                    <p className="mb-[50px]">学習履歴　1年半</p>
-                  </div>
-              
-                
-                  <div className="card">
-                    <img src="images/css100.png"></img>
-                    <p>CSS</p>
-                    <p>学習履歴　1年半</p>
-                  </div>
-                
-              
-                  <div className="card">
-                    <img src="images/javascript100.png"></img>
-                    <p>JAVASCRIPT</p>
-                    <p>学習履歴　1年半</p>
-                  </div>
-                  
-                
-                  <div className="card">
-                    <img src="images/python100.png"></img>
-                    <p>PYTHON</p>
-                    <p>学習履歴　1年半</p>
-                  </div>
+      </main>
 
-                </div>
-              </div>
+      <footer className="bg-[#020202] border-t border-[#00f3ff]/20 py-8 text-center font-mono-cyber text-gray-600 text-sm">
+        <p>© 2025 LIN HENGYOU PORTFOLIO. ALL RIGHTS RESERVED.</p>
+      </footer>
 
-              
-            </article>
-
-            <article id="panel-5" className="panel w-screen h-[100vh] flex items-center justify-center  bg-[#0c0c15]">
-              <div className="my-skill">
-                <div className="text-center mb-[96px]">
-                  <h1 className="inline-block text-6xl text-white">My Skill - </h1>
-                  <h1 className="inline-block text-6xl text-[#70A3F4]"> FRAMEWORK</h1>
-                </div>
-                <div className="flex flex-row gap-[74px]">
-
-                  <div className="card">
-                    <img src="images/react100.png"></img>
-                    <p>REACT</p>
-                    <p className="mb-[50px]">学習履歴　半年</p>
-                  </div>
-              
-                
-                  <div className="card">
-                    <img src="images/tailwind100.png"></img>
-                    <p>TAILWIND</p>
-                    <p>学習履歴　半年</p>
-                  </div>
-                
-              
-                  <div className="card">
-                    <img src="images/gsap100.png"></img>
-                    <p>GSAP</p>
-                    <p>学習履歴　半年</p>
-                  </div>
-                  
-                
-                  <div className="card">
-                    <img src="images/flask100.png"></img>
-                    <p>FLASK</p>
-                    <p>学習履歴　1年半</p>
-                  </div>
-
-                </div>
-              </div>
-
-            </article>
-            <article id="panel-6" className="panel w-screen h-[100vh] flex items-center justify-center  bg-[#0c0c15]">
-                 <div className="my-skill">
-                <div className="text-center mb-[96px]">
-                  <h1 className="inline-block text-6xl text-white">My Skill - </h1>
-                  <h1 className="inline-block text-6xl text-[#9AEF9E]"> TOOL</h1>
-                </div>
-                <div className="flex flex-row gap-[74px]">
-
-                  <div className="card">
-                    <img src="images/figma100.png"></img>
-                    <p>FIGMA</p>
-                    <p className="mb-[50px]">学習履歴　1年半</p>
-                  </div>
-              
-                
-                  <div className="card">
-                    <img src="images/photoshop100.png"></img>
-                    <p>PHOTOSHOP</p>
-                    <p>学習履歴　1年半</p>
-                  </div>
-                
-              
-                  <div className="card">
-                    <img src="images/premiere100.png"></img>
-                    <p>PREMIERE</p>
-                    <p>学習履歴　1年半</p>
-                  </div>
-                  
-                
-                  <div className="card">
-                    <img src="images/maya100.png"></img>
-                    <p>MAYA</p>
-                    <p>学習履歴　2年半</p>
-                  </div>
-
-                </div>
-              </div>
-
-            </article>
-            </div>
-            
-      </section>
     </div>
-    
-  )
+  );
 };
 
-export default About;
+// --- Sub-component: Skill Card with AI Mission Generator ---
+const SkillCard = ({ title, exp, icon, color, level, delay, scrollProgress}) => {
+  const [mission, setMission] = useState(null);
+  const [loading, setLoading] = useState(false);
+
+  const generateMission = async () => {
+    setLoading(true);
+    setMission(null);
+    const systemPrompt = `You are a strict Cyberpunk Drill Sergeant. Suggest a short, intense coding mission (project idea) using ${title}. Keep it under 20 words. Use formatting like "MISSION: ..." and Tech jargon.`;
+    const prompt = `Give me a ${title} project idea for a cyberpunk portfolio.`;
+    
+    const result = await callGemini(prompt, systemPrompt);
+    setMission(result);
+    setLoading(false);
+  };
+
+   // skill board delay effect
+  const cardProgress = Math.max(0, Math.min(1, scrollProgress * 1.5 - delay * 1));
+
+  return (
+    <div className="group relative bg-[#0a0a0a] border border-[#333] hover:border-[#00f3ff] transition-all duration-300 p-6 flex flex-col items-center hover:-translate-y-2"
+      style={{
+        opacity: cardProgress,
+        transform: `translateY(${30 * (1 - cardProgress)}px)`,
+        transition: 'opacity 0.4s ease-out, transform 0.8s ease-out, border-color 0.3s'
+      }}>
+      <div className="absolute inset-0 bg-gradient-to-b from-transparent to-[#00f3ff]/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none"></div>
+      
+      {/* Corner Markers */}
+      <div className="absolute top-0 left-0 w-2 h-2 border-t border-l border-gray-500 group-hover:border-[#00f3ff]"></div>
+      <div className="absolute top-0 right-0 w-2 h-2 border-t border-r border-gray-500 group-hover:border-[#00f3ff]"></div>
+      <div className="absolute bottom-0 left-0 w-2 h-2 border-b border-l border-gray-500 group-hover:border-[#00f3ff]"></div>
+      <div className="absolute bottom-0 right-0 w-2 h-2 border-b border-r border-gray-500 group-hover:border-[#00f3ff]"></div>
+
+      <div className="mb-4 p-4 bg-black rounded-full border border-gray-800 shadow-[0_0_15px_rgba(0,0,0,0.5)] group-hover:shadow-[0_0_20px_rgba(0,243,255,0.3)] transition-shadow duration-300">
+        {icon}
+      </div>
+      
+      <h3 className="text-xl font-cyber font-bold mb-1 text-white group-hover:text-[#00f3ff] transition-colors">{title}</h3>
+      <p className="font-mono-cyber text-gray-400 text-sm mb-4">学習履歴: {exp}</p>
+
+      <div className="w-full h-1 bg-gray-800 rounded-full overflow-hidden mb-4">
+        <div className="h-full bg-gradient-to-r from-[#00f3ff] to-[#ff00ff]" style={{ width: `${level}%` }}></div>
+      </div>
+
+    </div>
+  );
+};
+
+export default CyberPortfolio;

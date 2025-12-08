@@ -1,58 +1,95 @@
-import  { useRef, useEffect, useState } from "react";
-import { gsap ,Expo } from "gsap";
-import {ScrollSmoother} from "gsap/ScrollSmoother";
-import {AnimatePresence, motion} from "framer-motion";
-import "./index.css";
+import React, { useState, useEffect, useRef } from 'react';
+import { Monitor, User, Code, Mail, ExternalLink, Github, ChevronRight, Send, Layers, Cpu, Database, Zap, ArrowRight } from 'lucide-react';
 
-gsap.registerPlugin(ScrollSmoother);
+const Works2 = () => {
+  const works = [
+    { 
+      id: 1, 
+      title: 'News App', 
+      cat: 'javascript api', 
+      img: 'images/vendorMachine.png',
+      pos: 'lg:top-20 lg:left-0',
+      url:"https://get-xml-news.onrender.com" 
+    },
+    { 
+      id: 2, 
+      title: 'Wolf Hunter', 
+      cat: 'Next.Js', 
+      img: 'images/wolf_hunter_page.png',
+      pos: 'lg:top-40 lg:right-0',
+      url:"https://wolfhunter2023.onrender.com/" 
+    },
+    { 
+      id: 3, 
+      title: 'Subkari EC site', 
+      cat: 'WEB DESIGN', 
+      img: 'images/Subkari.png',
+      pos: 'lg:top-[500px] lg:left-20',
+      url:"https://subkari.onrender.com" 
+    },
+    { 
+      id: 4, 
+      title: 'Station', 
+      cat: 'UI INTERFACE', 
+      img: 'images/station0101.png',
+      pos: 'lg:top-[450px] lg:right-20',
+      url:"" 
+    },
+  ];
 
-const Works = () => {
-    useEffect(()=>{
-        let skewSetter = gsap.quickTo("img", "skewY"), // fast
-        clamp = gsap.utils.clamp(-20, 20); // don't let the skew go beyond 20 degrees.
+  return (
+    <section className="min-h-screen w-full bg-[#080808] pt-32 pb-20 px-4 animate-page-enter">
+      <div className="max-w-6xl mx-auto relative min-h-[1000px]">
+        
+        {/* Page Title */}
+        <div className="text-center mb-20">
+          <h2 className="text-6xl md:text-8xl font-black font-orbitron text-transparent bg-clip-text bg-gradient-to-b from-purple-400 to-purple-900 drop-shadow-[0_0_15px_rgba(168,85,247,0.4)]">
+            WORK
+          </h2>
+          <p className="text-gray-500 font-mono mt-2 tracking-widest">PROJECTS IN 2025</p>
+        </div>
 
-        ScrollSmoother.create({
-            wrapper: "#wrapper",
-            content: "#content",
-            smooth: 2,
-        speed: 3,
-            effects: true,
-            onUpdate: self => skewSetter(clamp(self.getVelocity() / -50)),
-            onStop: () => skewSetter(0)
-        });
+        {/* Scattered Grid */}
+        <div className="relative flex flex-col lg:block gap-12 lg:gap-0">
+          {works.map((work) => (
+            <a href={work.url} target='_blank' rel="noopener noreferrer">
+            <div 
+              key={work.id} 
+              className={`
+                lg:absolute ${work.pos} w-full lg:w-[450px] group cursor-pointer
+                transition-all duration-500 hover:z-20
+              `}
+            >
+              <div className="relative bg-gray-900 border border-gray-800 p-2 transform group-hover:-translate-y-2 group-hover:scale-105 transition-all duration-300 shadow-2xl">
+                {/* Image */}
+                <div className="relative overflow-hidden aspect-video">
+                  <div className="absolute inset-0 bg-purple-600/20 mix-blend-overlay z-10 opacity-0 group-hover:opacity-100 transition-opacity"></div>
+                  <img 
+                    src={work.img} 
+                    alt={work.title} 
+                    className="w-full h-full object-cover filter grayscale group-hover:grayscale-0 transition-all duration-500"
+                  />
+                  {/* Scanline */}
+                  <div className="absolute inset-0 bg-[linear-gradient(transparent_50%,rgba(0,0,0,0.5)_50%)] bg-[length:100%_4px] pointer-events-none opacity-20"></div>
+                </div>
 
-    },[]);
-
-
-  return(
-    <motion.div
-      initial={{ opacity: 0, y: 20 }}
-      animate={{ opacity: 1, y: 0 }}
-      exit={{ opacity: 0, y: -20 }}
-      transition={{ duration: 0.5 }}
-    >
-    <div className="">
-        <h1 className="text">Work</h1>
-            <h1 aria-hidden="true" className="text outline-text">Work</h1>
-            <h1 aria-hidden="true" className="text filter-text">Work</h1>
-
-            <div id="wrapper">
-                <section id="content">
-                    <section className="images bg-[#1e1e1e] mx-screen">
-                        <a href="https://get-xml-news.onrender.com" target="_blank" rel="noopener noreferrer" data-speed="0.8"><img data-speed="0.8" src="images/vendorMachine.png" alt=""/></a>
-                        <a href="https://google.com" target="_blank" rel="noopener noreferrer" data-speed="0.8"><img data-speed="0.9" src="https://images.unsplash.com/photo-1520271348391-049dd132bb7c?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=400&q=80" alt=""/></a>
-                        <a href="https://google.com" target="_blank" rel="noopener noreferrer" data-speed="0.8"><img data-speed="1" src="https://images.unsplash.com/photo-1609166214994-502d326bafee?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=400&q=80" alt=""/></a>
-                        <a href="https://google.com" target="_blank" rel="noopener noreferrer" data-speed="0.8"><img data-speed="1.1" src="https://images.unsplash.com/photo-1589882265634-84f7eb9a3414?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=434&q=80" alt=""/></a>
-                        <a href="https://google.com" target="_blank" rel="noopener noreferrer" data-speed="0.8"><img data-speed="0.9" src="https://images.unsplash.com/photo-1514689832698-319d3bcac5d5?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=434&q=80" alt=""/></a>
-                        <a href="https://google.com" target="_blank" rel="noopener noreferrer" data-speed="0.8"><img data-speed="1.2" src="https://images.unsplash.com/photo-1535207010348-71e47296838a?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=300&q=80" alt=""/></a>
-                        <a href="https://google.com" target="_blank" rel="noopener noreferrer" data-speed="0.8"><img data-speed="0.8" src="https://images.unsplash.com/photo-1588007375246-3ee823ef4851?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MjR8fG5lb258ZW58MHx8MHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=400&q=60" alt=""/></a>
-                        <a href="https://google.com" target="_blank" rel="noopener noreferrer" data-speed="0.8"><img data-speed="1" src="https://images.unsplash.com/photo-1571450669798-fcb4c543f6a4?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MjF8fG5lb258ZW58MHx8MHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=400&q=60" alt=""/></a>
-                    </section>
-                </section>
+                {/* Caption */}
+                <div className="mt-4 flex justify-between items-end px-2 pb-2">
+                  <div>
+                    <p className="text-xs text-purple-400 font-mono mb-1">{work.cat}</p>
+                    <h3 className="text-2xl font-bold font-orbitron text-white group-hover:text-purple-300 transition-colors">{work.title}</h3>
+                  </div>
+                  <div className="w-8 h-8 border border-gray-600 rounded-full flex items-center justify-center group-hover:bg-purple-600 group-hover:border-purple-600 transition-all">
+                    <ArrowRight size={16} className="text-white transform -rotate-45 group-hover:rotate-0 transition-transform" />
+                  </div>
+                </div>
+              </div>
             </div>
-    </div>
-    </motion.div>
-  )
+            </a>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
 };
-
-export default Works;
+export default Works2;
