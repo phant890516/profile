@@ -58,7 +58,7 @@ const CyberPortfolio = () => {
       
       {/* Decorative Glow Spots */}
       <div className="fixed top-0 left-1/4 w-96 h-96 bg-[#00f3ff] rounded-full filter blur-[150px] opacity-10 animate-pulse"></div>
-      <div className="fixed bottom-0 right-1/4 w-96 h-96 bg-[#ff00ff] rounded-full filter blur-[150px] opacity-10 animate-pulse" style={{animationDelay: '1s'}}></div>
+      <div className="fixed bottom-0 right-1/4 w-96 h-96 bg-[#006B99] rounded-full filter blur-[150px] opacity-10 animate-pulse" style={{animationDelay: '1s'}}></div>
 
 
       {/* --- Header --- */}
@@ -70,7 +70,7 @@ const CyberPortfolio = () => {
           <nav className="hidden md:flex space-x-8 font-mono-cyber text-sm">
             {['TOP PAGE', 'SKILLS', 'WORKS', 'CONTACT'].map((item) => (
               <a key={item} href="#" className="relative group text-gray-400 hover:text-[#00f3ff] transition-colors duration-300">
-                <span className="absolute -left-4 opacity-0 group-hover:opacity-100 transition-opacity text-[#ff00ff]">&gt;</span>
+                <span className="absolute -left-4 opacity-0 group-hover:opacity-100 transition-opacity text-[#006B99]">&gt;</span>
                 {item}
                 <span className="block h-[1px] w-0 group-hover:w-full bg-[#00f3ff] transition-all duration-300"></span>
               </a>
@@ -90,7 +90,7 @@ const CyberPortfolio = () => {
           </div>
           
           <h1 className="text-6xl md:text-9xl font-cyber font-black text-white mb-4 relative group hover:scale-105 transition-transform duration-500">
-            <span className="absolute -inset-1 blur opacity-30 bg-gradient-to-r from-[#00f3ff] to-[#ff00ff] group-hover:opacity-60 transition-opacity duration-300"></span>
+            <span className="absolute -inset-1 blur opacity-30 bg-gradient-to-r from-[#00f3ff] to-[#006B99] group-hover:opacity-60 transition-opacity duration-300"></span>
             <span className="relative z-10 glitch-text" data-text="ABOUT ME">ABOUT ME</span>
           </h1>
           <p className="font-mono-cyber text-[#00f3ff] tracking-[0.3em] text-lg animate-pulse">
@@ -104,11 +104,11 @@ const CyberPortfolio = () => {
           
           {/* Left Column: Image with Cyber Frame */}
           <div className="lg:col-span-5 relative group">
-            <div className="absolute -inset-2 bg-gradient-to-br from-[#00f3ff] to-[#ff00ff] opacity-50 blur-sm group-hover:opacity-80 transition-opacity duration-500 rounded-sm"></div>
+            <div className="absolute -inset-2 bg-gradient-to-br from-[#00f3ff] to-[#0A0E27] opacity-50 blur-sm group-hover:opacity-80 transition-opacity duration-500 rounded-sm"></div>
             <div className="relative border border-[#00f3ff]/50 bg-black p-1">
               {/* Corner Accents */}
               <div className="absolute top-0 left-0 w-8 h-8 border-t-4 border-l-4 border-[#00f3ff]"></div>
-              <div className="absolute bottom-0 right-0 w-8 h-8 border-b-4 border-r-4 border-[#ff00ff]"></div>
+              <div className="absolute bottom-0 right-0 w-8 h-8 border-b-4 border-r-4 border-[#66E6FF]"></div>
               
               <div className="relative overflow-hidden h-[500px] w-full bg-gray-900">
                 {/* Image Placeholder / Effect */}
@@ -130,8 +130,8 @@ const CyberPortfolio = () => {
 
           {/* Right Column: Text Content */}
           <div className="lg:col-span-7 space-y-8">
-            <div className="border-l-2 border-[#ff00ff] pl-6 relative">
-              <div className="absolute -left-[9px] top-0 w-4 h-4 bg-[#ff00ff] shadow-[0_0_10px_#ff00ff] rotate-45"></div>
+            <div className="border-l-2 border-[#0099CC] pl-6 relative">
+              <div className="absolute -left-[9px] top-0 w-4 h-4 bg-[#66E6FF] shadow-[0_0_10px_#ff00ff] rotate-45"></div>
               <h2 className="text-2xl font-cyber text-white mb-4">
                 INTRODUCTION
               </h2>
@@ -146,9 +146,9 @@ const CyberPortfolio = () => {
                 <Terminal size={24} />
               </div>
               <div className="font-mono-cyber text-gray-400 mb-6 leading-7">
-                <div className='inline-block'><span className="text-[#ff00ff] mr-2">&gt;</span><span>2000年生まれの台湾出身。現在は大阪市に在住し、フルスタックエンドエンジニアを目指してHAL大阪Web科に在学中。</span></div><br/><br/>
-                <div className='inline-block'><span className="text-[#ff00ff] mr-2">&gt;</span><span>以前はMayaやBlenderなどの3Dツールを使ったプロジェクト開発経験がありましたが、現在はその知識を活かしてWebデザインを中心に活動しています。</span></div><br/><br/>
-                <div className='inline-block'><span className="text-[#ff00ff] mr-2">&gt;</span><span>日々の学習ではReactをメインに、時々Node.jsとFlaskを学んでいます。最近はWebGLやShaderの知識も学習しています。</span></div>
+                <div className='inline-block'><span className="text-[#4DCCFF] mr-2">&gt;</span><span>2000年生まれの台湾出身。現在は大阪市に在住し、フルスタックエンドエンジニアを目指してHAL大阪Web科に在学中。</span></div><br/><br/>
+                <div className='inline-block'><span className="text-[#4DCCFF] mr-2">&gt;</span><span>以前はMayaやBlenderなどの3Dツールを使ったプロジェクト開発経験がありましたが、現在はその知識を活かしてWebデザインを中心に活動しています。</span></div><br/><br/>
+                <div className='inline-block'><span className="text-[#4DCCFF] mr-2">&gt;</span><span>日々の学習ではReactをメインに、時々Node.jsとFlaskを学んでいます。最近はWebGLやShaderの知識も学習しています。</span></div>
               </div>
               
               <div className="flex gap-4 mt-6">
@@ -156,9 +156,9 @@ const CyberPortfolio = () => {
                   <span className="relative z-10 flex items-center gap-2"><Mail size={16}/> EMAIL</span>
                   <div className="absolute inset-0 bg-[#00f3ff] transform -translate-x-full skew-x-12 group-hover:translate-x-0 transition-transform duration-300"></div>
                 </button></a>
-                <button onClick={handleGithubClick} className="relative px-6 py-2 bg-transparent text-[#ff00ff] border border-[#ff00ff] font-cyber tracking-wider hover:bg-[#ff00ff] hover:text-black transition-all duration-300 group overflow-hidden" id="gitButton">
+                <button onClick={handleGithubClick} className="relative px-6 py-2 bg-transparent text-[#0ba4e6] border border-[#0ba4e6] font-cyber tracking-wider hover:bg-[#0ba4e6] hover:text-black transition-all duration-300 group overflow-hidden" id="gitButton">
                   <span className="relative z-10 flex items-center gap-2"><Github size={16}/> GITHUB</span>
-                  <div className="absolute inset-0 bg-[#ff00ff] transform -translate-x-full skew-x-12 group-hover:translate-x-0 transition-transform duration-300"></div>
+                  <div className="absolute inset-0 bg-[#0ba4e6] transform -translate-x-full skew-x-12 group-hover:translate-x-0 transition-transform duration-300"></div>
                 </button>
               </div>
             </div>
@@ -347,7 +347,7 @@ const SkillCard = ({ title, exp, icon, color, level, delay, scrollProgress}) => 
       <p className="font-mono-cyber text-gray-400 text-sm mb-4">学習履歴: {exp}</p>
 
       <div className="w-full h-1 bg-gray-800 rounded-full overflow-hidden mb-4">
-        <div className="h-full bg-gradient-to-r from-[#00f3ff] to-[#ff00ff]" style={{ width: `${level}%` }}></div>
+        <div className="h-full bg-gradient-to-r from-[#00f3ff] to-[#0A0E27]" style={{ width: `${level}%` }}></div>
       </div>
 
     </div>
