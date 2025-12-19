@@ -11,6 +11,15 @@ Currently, two official plugins are available:
 
 If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
 
-#LIVE Site URL
+## LIVE Site URL
+
 **https://profile-5e8r.onrender.com/**  
 *(Server may redeploy automatically depending on Render conditions)*
+(this server is deployed by Render)
+
+## About this project
+
+This project is built for using React, Tailwind, GSAP, Unicorn studio.
+
+
+
