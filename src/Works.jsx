@@ -31,7 +31,7 @@ const Works2 = () => {
       id: 4, 
       title: 'Station', 
       cat: 'UI INTERFACE', 
-      img: 'images/station0101.png',
+      img: 'images/galaxy.png',
       pos: 'lg:top-[450px] lg:right-20',
       url:"" 
     },
