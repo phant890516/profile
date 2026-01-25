@@ -33,7 +33,7 @@ const Works2 = () => {
       cat: 'UI INTERFACE', 
       img: 'images/galaxy.png',
       pos: 'lg:top-[450px] lg:right-20',
-      url:"" 
+      url:"https://galaxy-simulator-sigma.vercel.app/" 
     },
   ];
 
