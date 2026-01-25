@@ -148,7 +148,7 @@ const CyberPortfolio = () => {
               <div className="font-mono-cyber text-gray-400 mb-6 leading-7">
                 <div className='inline-block'><span className="text-[#4DCCFF] mr-2">&gt;</span><span>2000年生まれの台湾出身。現在は大阪市に在住し、フルスタックエンドエンジニアを目指してHAL大阪Web科に在学中。</span></div><br/><br/>
                 <div className='inline-block'><span className="text-[#4DCCFF] mr-2">&gt;</span><span>以前はMayaやBlenderなどの3Dツールを使ったプロジェクト開発経験がありましたが、現在はその知識を活かしてWebデザインを中心に活動しています。</span></div><br/><br/>
-                <div className='inline-block'><span className="text-[#4DCCFF] mr-2">&gt;</span><span>日々の学習ではReactをメインに、時々Node.jsとFlaskを学んでいます。最近はWebGLやShaderの知識も学習しています。</span></div>
+                <div className='inline-block'><span className="text-[#4DCCFF] mr-2">&gt;</span><span>日々の学習ではReactをメインに、時々Flaskを学んでいます。最近はWebGLやShaderの知識も学習しています。</span></div>
               </div>
               
               <div className="flex gap-4 mt-6">
