@@ -9,7 +9,6 @@ It showcases the skills I have learned and am currently learning, and includes l
 
 ## 💻 Live Site URL
 https://linhengyouprofile.vercel.app/
-[https://profile-5e8r.onrender.com/](https://linhengyouprofile.vercel.app/)
 
 (The server may automatically redeploy depending on Render’s conditions.)
 This project is deployed using Render.
