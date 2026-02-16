@@ -8,8 +8,7 @@ This project is built using React, Tailwind CSS, GSAP, and Unicorn Studio.
 It showcases the skills I have learned and am currently learning, and includes links to other projects I have developed. The goal of this site is to present both my technical abilities and my design approach in a clean, interactive way.
 
 ## 💻 Live Site URL
-
-https://profile-5e8r.onrender.com/
+https://linhengyouprofile.vercel.app/
 
 (The server may automatically redeploy depending on Render’s conditions.)
 This project is deployed using Render.
