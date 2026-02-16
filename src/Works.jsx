@@ -29,17 +29,26 @@ const Works2 = () => {
     },
     { 
       id: 4, 
-      title: 'Station', 
-      cat: 'UI INTERFACE', 
+      title: 'Galaxy', 
+      cat: '3D SIMULATION', 
       img: 'images/galaxy.png',
       pos: 'lg:top-[450px] lg:right-20',
       url:"https://galaxy-simulator-sigma.vercel.app/" 
     },
+    { 
+      id: 5, 
+      title: 'Budgeting App', 
+      cat: 'FIREBASE', 
+      img: 'images/budgeting16-9.png',
+      pos: 'lg:top-[800px] lg:left-60',
+      url:"https://studio--studio-1553764776-f6733.us-central1.hosted.app/" 
+    },
+
   ];
 
   return (
     <section className="min-h-screen w-full bg-[#080808] pt-32 pb-20 px-4 animate-page-enter">
-      <div className="max-w-6xl mx-auto relative min-h-[1000px]">
+      <div className="max-w-6xl mx-auto relative min-h-[1500px]">
         
         {/* Page Title */}
         <div className="text-center mb-20">
