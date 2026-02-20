@@ -49,7 +49,7 @@ const Works2 = () => {
       cat: 'Three.Js', 
       img: 'images/water.png',
       pos: 'lg:top-[1000px] lg:right-20',
-      url:"file:///C:/Users/LinHung/Downloads/liquid-physics-sim1141.html" 
+      url:"https://studio--studio-1553764776-f6733.us-central1.hosted.app/" 
     },
 
   ];
