@@ -43,6 +43,14 @@ const Works2 = () => {
       pos: 'lg:top-[800px] lg:left-60',
       url:"https://studio--studio-1553764776-f6733.us-central1.hosted.app/" 
     },
+    { 
+      id: 6, 
+      title: 'Water Simulation', 
+      cat: 'Three.Js', 
+      img: 'images/water.png',
+      pos: 'lg:top-[1000px] lg:right-20',
+      url:"" 
+    },
 
   ];
 
